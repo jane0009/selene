@@ -1,0 +1,19 @@
+{
+  "id": "crashMe",
+  "version": "0.1.0",
+  "meta": {
+    "name": "Crash Me",
+    "description": "crash (verb, used without object) -\n\t12. *Computers.* **to shut down because of a malfunction of hardware or software.**",
+    "tags": ["dangerZone", "development"],
+    "authors": ["Jane Shimmer"],
+    "source": "https://github.com/jane0009/selene"
+  },
+  "settings": {
+    "hardCrash": {
+      "displayName": "Hard Crash",
+      "description": "Whether to crash the entire client, or just this extension",
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
