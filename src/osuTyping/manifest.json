@@ -1,0 +1,32 @@
+{
+  "id": "osuTyping",
+  "version": "0.4.20",
+  "meta": {
+    "name": "osu! typing",
+    "tagline": "click click click click click click",
+    "description": "adds the typing sounds from osu standard into your discord client. it's like a sensory toy but on discord\n*the default config values aim to replicate the actual way it works in osu*",
+    "tags": ["chat", "fun"],
+    "authors": ["Jane Shimmer"],
+    "source": "https://github.com/jane0009/selene"
+  },
+  "settings": {
+    "randomize": {
+      "displayName": "Randomize sounds",
+      "description": "Randomize the sounds played when typing",
+      "type": "boolean",
+      "default": true
+    },
+    "noBubbling": {
+      "displayName": "Disallow bubbling",
+      "description": "Disables repeated sounds on key hold",
+      "type": "boolean",
+      "default": false
+    },
+    "disabledKeys": {
+      "displayName": "Disabled keys",
+      "description": "Keys that will not play a sound when pressed",
+      "type": "list",
+      "default": [ "CTRL-Z" ]
+    }
+  }
+}

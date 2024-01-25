@@ -1,8 +1,10 @@
 {
-  "name": "sample-extension",
+  "name": "selene",
   "version": "1.0.0",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "node build.mjs",
+    "cb": "pnpm run clean && pnpm run build",
     "dev": "node build.mjs --watch",
     "repo": "node repo.mjs"
   },
