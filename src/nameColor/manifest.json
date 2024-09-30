@@ -1,0 +1,21 @@
+{
+  "id": "nameColor",
+  "version": "0.1.0",
+  "meta": {
+    "name": "Name Colors",
+    "description": "Library for modifying username colors",
+    "tags": ["chat", "appearance", "library"],
+    "authors": ["Jane Shimmer", "Cynosphere"],
+    "source": "https://github.com/jane0009/selene"
+  },
+  "dependencies": ["spacepack"],
+  "settings": {
+    "colorize": {
+      "displayName": "Colorize",
+      "description": "Whether to colorize uncolored usernames",
+      "type": "select",
+      "options": ["Uncolored", "All", "None"],
+      "default": "Uncolored"
+    }
+  }
+}

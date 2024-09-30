@@ -1,0 +1,20 @@
+{
+  "id": "roleColoredMessages",
+  "version": "0.1.0",
+  "meta": {
+    "name": "Role Colored Messages",
+    "description": "Color your messages :D (hh3 port) - Requires Name Colors",
+    "tags": ["chat", "appearance", "fun"],
+    "authors": ["Jane Shimmer", "Cynosphere"],
+    "source": "https://github.com/jane0009/selene"
+  },
+  "dependencies": ["nameColor"],
+  "settings": {
+    "pastelize": {
+      "displayName": "Pastelize message color",
+      "description": "Whether to pastelize (read: normalize) the message color, to improve readability for roles with very dark or very bright colors",
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
