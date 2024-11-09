@@ -1,6 +1,7 @@
 {
   "id": "crashMe",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "apiLevel": 2,
   "meta": {
     "name": "Crash Me",
     "description": "crash (verb, used without object) -\n\t12. *Computers.* **to shut down because of a malfunction of hardware or software.**",

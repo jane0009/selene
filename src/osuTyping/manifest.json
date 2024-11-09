@@ -1,6 +1,7 @@
 {
   "id": "osuTyping",
   "version": "0.4.20",
+  "apiLevel": 2,
   "meta": {
     "name": "osu! typing",
     "tagline": "click click click click click click",

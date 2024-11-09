@@ -1,21 +1,4 @@
-import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
-
-const mappings = {
-  ColorUtils: ["<=16777215", ", calc(var(--saturation-factor, 1) * "],
-  ChannelStore: '"ChannelStore"',
-  GuildMemberStore: '"GuildMemberStore"',
-  murmur: ".murmur;",
-  getDarkness: "1-(.299*(",
-  hex2int: ").num()",
-  hex2rgb: ".alpha()).css()",
-  int2hex: '<=16777215?"#".concat',
-  int2hsl: ", calc(var(--saturation-factor, 1) * ",
-  int2hslRaw: "=Math.round(60*(",
-  int2rgbArray: "return[",
-  int2rgba: '"rgba(".concat(',
-  isValidHex: "().valid(",
-  rgb2int: ".red<<16)+("
-};
+import { ExtensionWebpackModule } from "@moonlight-mod/types";
 
 const PASTEL_SATURATION = 75;
 const PASTEL_VALUE = 60;
@@ -54,31 +37,25 @@ function int2hsv(e: number) {
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   colorUtils: {
-    dependencies: [{ ext: "spacepack", id: "spacepack" }],
+    dependencies: [
+      { ext: "spacepack", id: "spacepack" },
+      { id: "discord/utils/ColorUtils" },
+      { id: "murmurhash" }
+    ],
     entrypoint: true,
     run: (module, exports, require) => {
-      const spacepack = require("spacepack_spacepack").default;
       // find the modules
-      const murmurhash = spacepack.findByCode(mappings.murmur)[0].exports;
-      const ColorUtil = spacepack.findByCode(...mappings.ColorUtils)[0].exports;
-      const cs = spacepack.findByCode(mappings.ChannelStore)[0].exports;
-      const gms = spacepack.findByCode(mappings.GuildMemberStore)[0].exports;
+      const murmurhash = require("murmurhash");
+      const ColorUtil = require("discord/utils/ColorUtils");
+      const ChannelStore = require("discord/stores/ChannelStore").default;
+      const GuildMemberStore = require("discord/stores/GuildMemberStore").default;
+
+      console.log(murmurhash, ColorUtil, ChannelStore, GuildMemberStore);
 
       // extract the code
-      const ChannelStore = spacepack.findObjectFromKey(cs, "getChannel");
-      const GuildMemberStore = spacepack.findObjectFromKey(gms, "getMember");
-      const hex2int = spacepack.findFunctionByStrings(
-        ColorUtil,
-        mappings.hex2int
-      );
-      const int2hsl = spacepack.findFunctionByStrings(
-        ColorUtil,
-        mappings.int2hsl
-      );
-      const isValidHex = spacepack.findFunctionByStrings(
-        ColorUtil,
-        mappings.isValidHex
-      );
+      const hex2int = ColorUtil.hex2int;
+      const int2hsl = ColorUtil.int2hsl;
+      const isValidHex = ColorUtil.isValidHex;
 
       // checking
       if (!ChannelStore) {
@@ -102,7 +79,9 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
         return;
       }
 
-      const colorize = moonlight.getConfigOption<string>("nameColor", "colorize") ?? "Uncolored";
+      const colorize =
+        moonlight.getConfigOption<string>("nameColor", "colorize") ??
+        "Uncolored";
 
       // actual module
       const nameColor: {

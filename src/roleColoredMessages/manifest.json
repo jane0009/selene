@@ -1,6 +1,7 @@
 {
   "id": "roleColoredMessages",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "apiLevel": 2,
   "meta": {
     "name": "Role Colored Messages",
     "description": "Color your messages :D (hh3 port) - Requires Name Colors",
